@@ -1,0 +1,20 @@
+Feature Extractor
+	•	Tìm hiểu
+Quá trình sử dụng một mô hình đã được huấn luyện để xử lý ảnh khuôn mặt đã được căn chỉnh và tạo ra một vector số thực có chiều dài cố định (ví dụ: 128, 256, 512 chiều). Vector này gọi là "face embedding" hoặc "feature vector". Lý tưởng nhất, các vector của cùng một người sẽ gần nhau trong không gian vector, trong khi vector của những người khác nhau sẽ cách xa nhau.
+Các mô hình nổi bật:
+	•	FaceNet (Google): Một trong những mô hình tiên phong, sử dụng kiến trúc CNN sâu và hàm mất mát Triplet Loss để học cách tạo ra các embedding có khả năng phân biệt tốt. Output thường là vector 128 chiều.
+	•	VGGFace / VGGFace2 (Đại học Oxford): Dựa trên kiến trúc VGG nổi tiếng, được huấn luyện trên tập dữ liệu khuôn mặt lớn.
+	•	DeepFace (Facebook): Một trong những hệ thống Deep Learning đầu tiên đạt hiệu năng gần bằng con người trên một số bộ dữ liệu chuẩn.
+	•	ArcFace, CosFace, SphereFace: Các mô hình này tập trung vào việc cải tiến hàm mất mát (loss function) trong quá trình huấn luyện CNN. Thay vì chỉ dùng Triplet Loss hoặc Softmax Loss truyền thống, chúng đưa ra các hàm mất mát dựa trên biên độ góc (angular margin), giúp tăng cường khả năng phân biệt giữa các lớp (người) khác nhau, đặc biệt hiệu quả trong các bài toán nhận diện quy mô lớn. Output thường là vector 512 chiều.
+	•	Các mô hình khác: ResNet (thường được dùng làm backbone), MobileNet (nhẹ, phù hợp cho thiết bị di động), SFace, ...
+Lựa chọn sử dụng VGG-Face: phổ biến và có độ chính xác khá tốt.
+
+	•	Lên kế hoạch thực hiện: B1: Sử dụng ảnh từ thư mục “output_face” và trích xuất đặc trưng khuôn mặt 
+B2: Vector hóa các đặc trưng bằng thư viện numpy (vector số)
+B3: Lưu vector và thư mục “output_vector”
+
+Các thư viện sử dụng:
+Os
+Numpy
+Deepface
+logging
